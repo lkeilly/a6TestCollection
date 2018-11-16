@@ -1,14 +1,15 @@
-package a6test.lkeilly;
+package moretests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import org.junit.Test;
 import a6.*;
 
-public class A6Tests {
+public class myTest {
 
 	// Initialize different pixel amounts.
 	Pixel red = new ColorPixel(1, 0, 0);
@@ -116,8 +117,8 @@ public class A6Tests {
 		ObservablePicture validImmutablePicture = new ObservablePictureImpl(randomImmutablePicture);
 
 		// Observers
-		ROIObserverImpl observer1 = new ROIObserverImpl();
-		ROIObserverImpl observer2 = new ROIObserverImpl();
+		ROIObserverImpl1 observer1 = new ROIObserverImpl1();
+		ROIObserverImpl1 observer2 = new ROIObserverImpl1();
 
 		// Registering observers with regions
 		validImmutablePicture.registerROIObserver(observer1, region1);
@@ -137,7 +138,7 @@ public class A6Tests {
 		assertEquals(1, validImmutablePicture.findROIObservers(region3).length);
 		assertEquals(observer2, validImmutablePicture.findROIObservers(region3)[0]);
 
-		// Unregistering a observer2 from all its regions
+		// Unregistering observer2 from all its regions
 		validImmutablePicture.unregisterROIObserver(observer2);
 		assertEquals(2, validImmutablePicture.findROIObservers(region1).length);
 		assertEquals(observer1, validImmutablePicture.findROIObservers(region1)[0]);
@@ -190,8 +191,8 @@ public class A6Tests {
 		ObservablePicture validImmutablePicture = new ObservablePictureImpl(randomImmutablePicture);
 
 		// Observers
-		ROIObserverImpl observer1 = new ROIObserverImpl();
-		ROIObserverImpl observer2 = new ROIObserverImpl();
+		ROIObserverImpl1 observer1 = new ROIObserverImpl1();
+		ROIObserverImpl1 observer2 = new ROIObserverImpl1();
 
 		// Registering observers with regions
 		validImmutablePicture.registerROIObserver(observer1, region1);
@@ -229,8 +230,8 @@ public class A6Tests {
 		ObservablePicture validImmutablePicture = new ObservablePictureImpl(randomImmutablePicture);
 
 		// Observers
-		ROIObserverImpl observer1 = new ROIObserverImpl();
-		ROIObserverImpl observer2 = new ROIObserverImpl();
+		ROIObserverImpl1 observer1 = new ROIObserverImpl1();
+		ROIObserverImpl1 observer2 = new ROIObserverImpl1();
 
 		// Registering observers with regions
 		validImmutablePicture.registerROIObserver(observer1, region1);
@@ -277,6 +278,7 @@ public class A6Tests {
 		observer1.clearCounter();
 		observer2.clearCounter();
 	}
+	
 
 	private static boolean check_for_component_equality(Pixel a, Pixel b) {
 		assertEquals(a.getRed(), b.getRed(), 0.001);
